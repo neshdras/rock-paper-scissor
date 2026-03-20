@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+import './App.css'
 function App() {
   const gameLibrairy = ["rock", "paper", "scissors"]
   // const game2Librairy = ["Pierre", "Papier", "Ciseau", "Lézard", "Spock"]
@@ -9,12 +9,12 @@ function App() {
 
   function handleClick(sign){
     const playerChoice = sign
-    setBotChoice(gameLibrairy[Math.floor(Math.random()*3)])
-    console.log(playerChoice)
-    console.log(botChoice);
-    if (playerChoice === botChoice) {
+    const gameBotChoice = gameLibrairy[Math.floor(Math.random()*3)]
+    setBotChoice(gameBotChoice)
+    
+    if (playerChoice === gameBotChoice) {
         setWinner("Draw")
-    } else if(playerChoice === "rock" && botChoice === "scissors" || playerChoice==="paper" && botChoice === "rock" || playerChoice === "scissors" && botChoice==="paper"){
+    } else if(playerChoice === "rock" && gameBotChoice === "scissors" || playerChoice==="paper" && gameBotChoice === "rock" || playerChoice === "scissors" && gameBotChoice==="paper"){
       setWinner("Win")
     } else {
       setWinner("Loose")

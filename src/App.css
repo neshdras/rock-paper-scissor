@@ -1,0 +1,106 @@
+:root {
+  --primary-bg: #1a1a2e;
+  --accent-color: #4ecca3;
+  --card-bg: #16213e;
+  --text-color: #ffffff;
+}
+
+body {
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+#root {
+  text-align: center;
+  width: 100%;
+  max-width: 500px;
+}
+
+h1 {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 2rem;
+  color: var(--accent-color);
+}
+
+/* Zone d'affichage du résultat */
+.gamemode {
+  height: 200px;
+  background: var(--card-bg);
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #0f3460;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.gamemode p {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 10px 0;
+  text-transform: uppercase;
+  /* Petite animation quand le texte change */
+  animation: popIn 0.3s ease-out;
+}
+
+.result-bot {
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 0 10px var(--accent-color));
+  animation: slideDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Conteneur des boutons */
+.game-button {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.game-button button {
+  background: var(--card-bg);
+  border: 2px solid var(--accent-color);
+  border-radius: 50%;
+  width: 90px;
+  height: 90px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.game-button button img {
+  width: 100%;
+  height: auto;
+}
+
+.game-button button:hover {
+  transform: scale(1.1) rotate(5deg);
+  background: var(--accent-color);
+}
+
+.game-button button:active {
+  transform: scale(0.9);
+}
+
+/* Animations */
+@keyframes popIn {
+  0% { transform: scale(0); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideDown {
+  0% { transform: translateY(-50px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
