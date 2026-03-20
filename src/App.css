@@ -1,6 +1,8 @@
 :root {
   --primary-bg: #1a1a2e;
   --accent-color: #4ecca3;
+  --lose-color: #e94560;
+  --draw-color: #fca311;
   --card-bg: #16213e;
   --text-color: #ffffff;
 }
@@ -8,99 +10,122 @@
 body {
   background-color: var(--primary-bg);
   color: var(--text-color);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
+  min-height: 100vh;
 }
 
-#root {
+.container {
   text-align: center;
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
 }
-
-h1 {
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  margin-bottom: 2rem;
+.mode-container{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+.score{
+  margin-bottom: 30px;
+}
+/* Bouton de changement de mode */
+.mode-toggle {
+  background: transparent;
+  border: 1px solid var(--accent-color);
   color: var(--accent-color);
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  transition: 0.3s;
 }
 
-/* Zone d'affichage du résultat */
-.gamemode {
-  height: 200px;
+.mode-toggle:hover {
+  background: var(--accent-color);
+  color: var(--card-bg);
+}
+
+/* Zone du plateau de jeu */
+.game-board {
   background: var(--card-bg);
-  border-radius: 20px;
-  margin-bottom: 2rem;
+  border-radius: 30px;
+  padding: 40px;
+  margin-bottom: 3rem;
+  min-height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  border: 2px solid #0f3460;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
-.gamemode p {
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 10px 0;
+.status {
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 0 0 20px 0;
   text-transform: uppercase;
-  /* Petite animation quand le texte change */
-  animation: popIn 0.3s ease-out;
+}
+
+/* Couleurs dynamiques pour le résultat */
+.win { color: var(--accent-color); }
+.lose { color: var(--lose-color); }
+.draw { color: var(--draw-color); }
+
+.bot-pick {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
 
 .result-bot {
   width: 80px;
   height: 80px;
-  filter: drop-shadow(0 0 10px var(--accent-color));
-  animation: slideDown 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* Conteneur des boutons */
-.game-button {
+/* Grille de boutons */
+.game-button-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
+  
 }
 
-.game-button button {
+.choice-btn {
   background: var(--card-bg);
-  border: 2px solid var(--accent-color);
+  border: 3px solid #0f3460;
   border-radius: 50%;
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.game-button button img {
+.choice-btn img {
   width: 100%;
   height: auto;
 }
 
-.game-button button:hover {
-  transform: scale(1.1) rotate(5deg);
-  background: var(--accent-color);
+.choice-btn:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 20px rgba(78, 204, 163, 0.2);
 }
 
-.game-button button:active {
+.choice-btn:active {
   transform: scale(0.9);
 }
 
-/* Animations */
 @keyframes popIn {
   0% { transform: scale(0); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
-}
-
-@keyframes slideDown {
-  0% { transform: translateY(-50px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
 }
